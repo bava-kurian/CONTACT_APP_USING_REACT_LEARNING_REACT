@@ -5,28 +5,42 @@ class AddContact extends React.Component{
         name:'',
         email:'',
         };
+        add=(e)=> {
+            e.preventDefault();
+            if(this.state.name==="" || this.state.email==="")
+                alert("All field are mandatory");
+            console.log(this.state);
+            return;
+            
+        }
     render(){
         return(
-            <div className="ui container main">
-                <br />
-                <br />
-                <h2>Add Contact</h2>
-                <form className="ui form">
-                    <div className="field">
-                        <label htmlFor="">Name</label>
-                        <input type="text" name="name" placeholder="Name"
-                        value={this.state.name}
-                        onChange={(e) => this.setState({ name: e.target.value })}/>
-                    </div>
-                    <div className="field">
-                        <label htmlFor="">Email</label>
-                        <input type="text" name="Number" placeholder="Number" 
-                        value={this.state.email}
-                        onChange={(e) => this.setState({ email: e.target.value })}/>
-                    </div>
-                    <input type="button" value="Add" className="ui button blue" />
-                </form>
-            </div>
+            <div className="ui main">
+            <h2>Add Contact</h2>
+            <form className="ui form" onSubmit={this.add}>
+              <div className="field">
+                <label>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={this.state.name}
+                  onChange={(e) => this.setState({ name: e.target.value })}
+                />
+              </div>
+              <div className="field">
+                <label>Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={(e) => this.setState({ email: e.target.value })}
+                />
+              </div>
+              <button className="ui button blue">Add</button>
+            </form>
+          </div>
         )
     }
 }
